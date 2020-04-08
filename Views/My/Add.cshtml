@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "提交新闻";
+}
+
+<h2>提交新闻</h2>
+
+<div id="form">
+    <div class="form-group">
+        <label>标题：</label>
+        <input class="form-control" type="text" name="title" />
+    </div>
+    <div class="form-group">
+        <label>关键字：</label>
+        <input class="form-control" type="text" name="keyword" />
+    </div>
+    <textarea id="content" class="form-control" name="contents" placeholder="编辑新闻内容..."></textarea>
+    <button class="btn btn-success" type="button">提交</button>
+</div>
+
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#content',
+        language: "zh_CN",
+        menubar: 'edit format',
+        toolbar: 'undo redo | bold italic | align | outdent indent'
+    })
+
+    var btn = document.querySelector('button.btn')
+    btn.addEventListener('click', _ => {
+        var content = tinyMCE.activeEditor.getContent()
+        var contents = htmlToString(content)
+        var title = getItemVal('input[name=title]')
+        var keyword = getItemVal('input[name=keyword]')
+        var data = {}
+        data.title = title
+        data.keyword = keyword
+        data.contents = contents
+
+        ajax('', data).catch(err => {
+            console.log(err)
+        });
+    })
+
+    function getItemVal(selector) {
+        return document.querySelector(selector).value;
+    }
+
+    function htmlToString(sHtml) {
+        return sHtml.replace(/[<>&"]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]; }).replace(/&/g, '%26');  // 我遇坑了mark一下，这里的&符号也需要转义，不然请求参数会错乱
+    }
+
+    function ajax(url, data) {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = _ => {
+                if (xhr.readyState == 4 && xhr.status == 200) resolve();
+            }
+            console.log(data)
+            xhr.send(`Title=${data.title}&Keyword=${data.keyword}&Contents=${data.contents}&timp=${new Date().getTime()}`);
+        })
+    }
+</script>

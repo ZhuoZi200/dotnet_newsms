@@ -11,9 +11,11 @@ namespace WebApplication2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class News
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }

@@ -32,12 +32,23 @@ namespace WebApplication2.Controllers
             
             return PartialView();
         }
-
-        public ActionResult QueryRes(News news)
+        public ActionResult Add()
         {
-            ViewBag.Title = news.Title;
-            ViewBag.Keyword = news.Keyword;
-            return Content("你查询的标题是：" + news.Title + "，关键字是：" + news.Keyword);
+            return View();
         }
+        [HttpPost]
+        public ActionResult Add(News news)
+        {
+            DbContext dbContext = new DbContext("NEWSEntities");
+            dbContext.Set<News>().Add(news);
+            dbContext.SaveChanges();
+            return View();
+        }
+        //public ActionResult QueryRes(News news)
+        //{
+        //    ViewBag.Title = news.Title;
+        //    ViewBag.Keyword = news.Keyword;
+        //    return Content("你查询的标题是：" + news.Title + "，关键字是：" + news.Keyword);
+        //}
     }
 }
