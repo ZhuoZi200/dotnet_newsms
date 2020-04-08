@@ -10,17 +10,17 @@ namespace WebApplication2.Controllers
     public class MyController : Controller
     {
         // GET: My
-        public ActionResult Index(string key)
+        public ActionResult Index(QueryModel qmodel)
         {
             DbContext dbContext = new DbContext("NEWSEntities");
             List<News> newsList = dbContext.Set<News>().ToList();
             dbContext.Dispose();   // 类似于析构函数
 
             NewsListMessage newsListMessage = new NewsListMessage();
-            if (string.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(qmodel.key))
                 newsListMessage.NewsList = newsList;
             else
-                newsListMessage.NewsList = newsList.Where(o => o.Keyword.Contains(key)).ToList();
+                newsListMessage.NewsList = newsList.Where(o => o.Keyword.Contains(qmodel.key)).ToList();
             //newsListMessage.NewsList = newsList;
             //newsListMessage.Message = "新闻管理";       
 
