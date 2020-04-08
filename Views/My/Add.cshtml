@@ -15,6 +15,21 @@
         <label>关键字：</label>
         <input class="form-control" type="text" name="keyword" />
     </div>
+    <div class="form-group">
+        <label>作者：</label>
+        <input class="form-control" type="text" name="author" />
+    </div>
+    <div class="form-group">
+        <label>类别：</label>
+        <select class="form-control" name="type">
+            <option value="0">国际</option>
+            <option value="1">政治</option>
+            <option value="2">军事</option>
+            <option value="3">科技</option>
+            <option value="4">娱乐</option>
+            <option value="5">其他</option>
+        </select>
+    </div>
     <textarea id="content" class="form-control" name="contents" placeholder="编辑新闻内容..."></textarea>
     <div class="button-group">
         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">提交</button>
@@ -52,10 +67,15 @@
         var contents = htmlToString(content)
         var title = getItemVal('input[name=title]')
         var keyword = getItemVal('input[name=keyword]')
+        var author = getItemVal('input[name=author]')
+        var type = getItemVal('select')
         var data = {}
         data.title = title
         data.keyword = keyword
         data.contents = contents
+        data.author = author
+        data.type = type
+        data.datetime = new Date().format("yyyy-MM-dd hh:mm:ss");
 
         ajax('', data).catch(err => {
             console.log(err)
@@ -79,7 +99,23 @@
                 if (xhr.readyState == 4 && xhr.status == 200) resolve();
             }
             console.log(data)
-            xhr.send(`Title=${data.title}&Keyword=${data.keyword}&Contents=${data.contents}&timp=${new Date().getTime()}`);
+            xhr.send(`Title=${data.title}&Keyword=${data.keyword}&Contents=${data.contents}&Author=${data.author}&Type=${data.type}&CreateTime=${data.datetime}`);
         })
+    }
+
+    Date.prototype.format = function (fmt) {    // 日期时间格式化
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
     }
 </script>
