@@ -1,0 +1,42 @@
+﻿body {
+    #form {
+        .button-group {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+
+            button:first-child {
+                margin-right: 10px;
+            }
+
+            button:last-child {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .modal {
+        .modal-dialog {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .modal-content {
+                width: 240px;
+                .modal-body {
+                    color: red;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+                }
+
+                .modal-footer {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

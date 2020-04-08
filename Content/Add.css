@@ -1,0 +1,31 @@
+body #form .button-group {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+body #form .button-group button:first-child {
+  margin-right: 10px;
+}
+body #form .button-group button:last-child {
+  margin-left: 10px;
+}
+body .modal .modal-dialog {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .modal .modal-dialog .modal-content {
+  width: 240px;
+}
+body .modal .modal-dialog .modal-content .modal-body {
+  color: red;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+body .modal .modal-dialog .modal-content .modal-footer {
+  text-align: center;
+}

@@ -1,11 +1,12 @@
 ﻿
 @{
     ViewBag.Title = "提交新闻";
+    @Styles.Render("~/Content/Add.css");
 }
 
 <h2>提交新闻</h2>
 
-<div id="form">
+<div id="form" class="well">
     <div class="form-group">
         <label>标题：</label>
         <input class="form-control" type="text" name="title" />
@@ -15,7 +16,24 @@
         <input class="form-control" type="text" name="keyword" />
     </div>
     <textarea id="content" class="form-control" name="contents" placeholder="编辑新闻内容..."></textarea>
-    <button class="btn btn-success" type="button">提交</button>
+    <div class="button-group">
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">提交</button>
+        <button class="btn btn-info" type="reset">重置</button>
+    </div>
+</div>
+
+@*提交成功时弹出的一个模态框*@
+<div class="modal bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <h4 class="modal-body">
+                提交成功!
+            </h4>
+            <div class="modal-footer">
+                <a href="/My/Index" class="btn btn-primary">返回</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="~/Content/tinymce/tinymce.min.js"></script>
@@ -24,7 +42,8 @@
         selector: '#content',
         language: "zh_CN",
         menubar: 'edit format',
-        toolbar: 'undo redo | bold italic | align | outdent indent'
+        toolbar: 'undo redo | bold italic | align | outdent indent',
+        height: '360px'
     })
 
     var btn = document.querySelector('button.btn')
