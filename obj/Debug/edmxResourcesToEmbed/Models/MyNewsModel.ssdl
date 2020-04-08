@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NEWSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Author" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Source" Type="nchar" MaxLength="100" />
+    <Property Name="Keyword" Type="nchar" MaxLength="50" />
+    <Property Name="Introduce" Type="nchar" MaxLength="200" />
+    <Property Name="Contents" Type="text" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="CreateUserName" Type="nchar" MaxLength="20" />
+    <Property Name="Hits" Type="int" />
+    <Property Name="isRec" Type="int" />
+    <Property Name="isTop" Type="int" />
+    <Property Name="isHead" Type="int" />
+    <Property Name="CheckStatus" Type="int" />
+    <Property Name="CheckUserName" Type="nchar" MaxLength="20" />
+    <Property Name="CheckTime" Type="datetime" />
+    <Property Name="CheckMeno" Type="nchar" MaxLength="100" />
+    <Property Name="Type" Type="bigint" />
+    <Property Name="Code" Type="nchar" MaxLength="20" />
+    <Property Name="Link" Type="nchar" MaxLength="200" />
+  </EntityType>
+  <EntityContainer Name="NEWSModelStoreContainer">
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

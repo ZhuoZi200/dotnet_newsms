@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Author" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
     <Property Name="Source" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />

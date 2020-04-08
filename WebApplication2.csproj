@@ -295,8 +295,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\News.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>News.Context.cs</LastGenOutput>
       <DependentUpon>News.edmx</DependentUpon>
+      <LastGenOutput>News.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\News.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -305,13 +305,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\News.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>News.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\News.edmx.diagram">
-      <DependentUpon>News.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\tinymce\langs\readme.md" />
     <Content Include="Content\tinymce\readme.md" />
     <Content Include="Content\tinymce\skins\content\dark\content.min.css.map" />
@@ -330,6 +323,13 @@
     <Content Include="Content\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
     <Content Include="Content\tinymce\skins\ui\oxide\skin.min.css.map" />
     <Content Include="Content\tinymce\skins\ui\oxide\skin.mobile.min.css.map" />
+    <EntityDeploy Include="Models\News.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>News.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\News.edmx.diagram">
+      <DependentUpon>News.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
