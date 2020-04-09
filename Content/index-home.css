@@ -125,6 +125,14 @@ body .all .login-content .login-header .switch-btn .on {
   color: #337ab7;
   border-bottom: 3px solid currentColor;
 }
+body .all .login-content .login-body .form-group:first-of-type small {
+  position: absolute !important;
+  top: 243px;
+}
+body .all .login-content .login-body .form-group:last-of-type small {
+  position: absolute !important;
+  top: 309px;
+}
 body .all .login-content .login-body-0 .input-group-lg,
 body .all .login-content .login-body-0 button {
   margin: 20px 0;

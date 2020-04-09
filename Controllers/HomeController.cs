@@ -14,13 +14,14 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        public ActionResult Regis(UserInfo userInfo)
+        [HttpPost]
+        public ActionResult Index(UserInfo userInfo)
         {
             DbContext dbContext = new DbContext("NEWSEntities");
             dbContext.Set<UserInfo>().Add(userInfo);
             dbContext.SaveChanges();
             dbContext.Dispose();   // 类似于析构函数
-            return View("Index");
+            return View();
         }
         public ActionResult About()
         {
