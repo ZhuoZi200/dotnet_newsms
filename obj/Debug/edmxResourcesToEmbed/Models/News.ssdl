@@ -25,7 +25,16 @@
     <Property Name="Code" Type="nchar" MaxLength="20" />
     <Property Name="Link" Type="nchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="NewsType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Val" Type="int" />
+  </EntityType>
   <EntityContainer Name="NEWSModelStoreContainer">
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsType" EntityType="Self.NewsType" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

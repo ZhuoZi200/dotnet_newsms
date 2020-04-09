@@ -28,6 +28,10 @@
             <option value="3">科技</option>
             <option value="4">娱乐</option>
             <option value="5">其他</option>
+            @*@foreach (var item in ViewBag.newsTypeList)
+            {
+                <option value="@item.id">@item.Name</option>
+            }*@
         </select>
     </div>
     <textarea id="content" class="form-control" name="contents" placeholder="编辑新闻内容..."></textarea>

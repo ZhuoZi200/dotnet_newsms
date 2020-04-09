@@ -27,5 +27,14 @@
   </EntityType>
   <EntityContainer Name="NEWSEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="NewsType" EntityType="NEWSModel.NewsType" />
   </EntityContainer>
+  <EntityType Name="NewsType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Val" Type="Int32" />
+  </EntityType>
 </Schema>

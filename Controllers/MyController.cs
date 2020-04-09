@@ -34,6 +34,11 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Add()
         {
+            DbContext dbContext = new DbContext("NEWSEntities");
+            List<NewsType> newsTypeList = dbContext.Set<NewsType>().ToList();
+            dbContext.Dispose();   // 类似于析构函数
+            ViewBag.newsTypeList = newsTypeList;
+
             return View();
         }
         [HttpPost]
@@ -42,6 +47,7 @@ namespace WebApplication2.Controllers
             DbContext dbContext = new DbContext("NEWSEntities");
             dbContext.Set<News>().Add(news);
             dbContext.SaveChanges();
+            dbContext.Dispose();   // 类似于析构函数
             return View();
         }
         //public ActionResult QueryRes(News news)
