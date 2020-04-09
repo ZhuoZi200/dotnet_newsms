@@ -33,14 +33,18 @@
             <button class="btn btn-primary btn-block btn-lg" type="submit" disabled>登录</button>
         </form>
 
-        <form class="login-body login-body-1">
-            <input class="form-control" type="text" name="Nickname" placeholder="用户名" />
-               
-            <input class="form-control" type="password" name="Password" placeholder="密码" />
-            
-            <input class="form-control" type="password" placeholder="确认密码" />
+        <form class="login-body login-body-1" action="/Home/Index" method="post">
+            <div class="form-group">
+                <input class="form-control" type="text" name="Nickname" placeholder="用户名" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="Password" placeholder="密码" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="ComfirmPassword" placeholder="确认密码" />
+            </div>
 
-            <button class="btn btn-primary btn-block btn-lg" type="button">注册</button>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">注册</button>
         </form>
     </div>
 </div>
@@ -73,40 +77,40 @@
     })
 
     // 注册部分
-    const nickName = document.querySelector('.login-body-1 input:nth-of-type(1)');
-    const pwd = document.querySelector('.login-body-1 input:nth-of-type(2)');
-    const conPwd = document.querySelector('.login-body-1 input:nth-of-type(3)');
-    const regisSubmit = document.querySelector('.login-body-1 button');
+    //const nickName = document.querySelector('.login-body-1 input:nth-of-type(1)');
+    //const pwd = document.querySelector('.login-body-1 input:nth-of-type(2)');
+    //const conPwd = document.querySelector('.login-body-1 input:nth-of-type(3)');
+    //const regisSubmit = document.querySelector('.login-body-1 button');
 
     // ajax提交注册
-    let data = {}
-    regisSubmit.addEventListener('click', function () {
-        data.nickName = nickName.value;
-        data.pwd = pwd.value;
-        // 注册检查两次密码是否一致
-        if (pwd.value == conPwd.value) {
-            ajax('/Home/Index', data)
-            .then(res => {
-                window.location.reload()
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        }
-    })
+    //let data = {}
+    //regisSubmit.addEventListener('click', function () {
+    //    data.nickName = nickName.value;
+    //    data.pwd = pwd.value;
+    //     注册检查两次密码是否一致
+    //    if (pwd.value == conPwd.value) {
+    //        ajax('/Home/Index', data)
+    //        .then(res => {
+    //            window.location.reload()
+    //        })
+    //        .catch(err => {
+    //            console.log(err);
+    //        })
+    //    }
+    //})
 
-    function ajax(url, data) {
-        return new Promise(resolve => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', url);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) resolve();
-            }
-            console.log(data)
-            xhr.send(`Nickname=${data.nickName}&Password=${data.pwd}`);
-        })
-    }
+    //function ajax(url, data) {
+    //    return new Promise(resolve => {
+    //        const xhr = new XMLHttpRequest();
+    //        xhr.open('POST', url);
+    //        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //        xhr.onreadystatechange = function () {
+    //            if (xhr.readyState == 4 && xhr.status == 200) resolve();
+    //        }
+    //        console.log(data)
+    //        xhr.send(`Nickname=${data.nickName}&Password=${data.pwd}`);
+    //    })
+    //}
 
     // 表单验证
     $('form.login-body-0').bootstrapValidator({
@@ -145,6 +149,56 @@
                     regexp: { //正则表达式
                         regexp: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/,
                         message: '密码至少包含 数字和英文，长度6-20'
+                    }
+                }
+            }
+        }
+    });
+
+    $('form.login-body-1').bootstrapValidator({
+        // 默认的提示消息
+        message: 'This value is not valid',
+        // 表单框里右侧的icon
+        submitHandler: function (validator, form, submitButton) {
+            // 表单提交成功时会调用此方法
+            // validator: 表单验证实例对象
+            // form  jq对象  指定表单对象
+            // submitButton  jq对象  指定提交按钮的对象
+        },
+        fields: {
+            Nickname: {
+                message: '用户名验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    },
+                    stringLength: { //长度限制
+                        min: 6,
+                        max: 18,
+                        message: '用户名长度必须在6到18位之间'
+                    },
+                    regexp: { //正则表达式
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: '用户名只能包含大写、小写、数字和下划线'
+                    }
+                }
+            },
+            Password: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    regexp: { //正则表达式
+                        regexp: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/,
+                        message: '密码至少包含 数字和英文，长度6-20'
+                    }
+                }
+            },
+            ComfirmPassword: {
+                validators: {
+                    identical: {  //比较是否相同
+                        field: 'Password',  //需要进行比较的input name值
+                        message: '两次密码不一致'
                     }
                 }
             }

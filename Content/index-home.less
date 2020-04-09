@@ -9,7 +9,7 @@
     }
 }
 :root {
-    --themeColor: #4385ff;
+    --themeColor: #337ab7;
 }
 * {
     margin: 0;
@@ -128,29 +128,27 @@ body {
                     }
 
                     .on {
-                        color: #337ab7;
+                        color: var(--themeColor);
                         border-bottom: 3px solid currentColor;
                     }
                 }
             }
 
-            .login-body {
+            .login-body-0 {
                 .form-group:first-of-type {
                     small {
-                        position: absolute !important;
+                        position: absolute;
                         top: 243px;
                     }
                 }
 
                 .form-group:last-of-type {
                     small {
-                        position: absolute !important;
+                        position: absolute;
                         top: 309px;
                     }
                 }
-            }
 
-            .login-body-0 {
                 .input-group-lg, button {
                     margin: 20px 0;
                 }
@@ -162,8 +160,37 @@ body {
                 justify-content: space-evenly;
                 height: 100%;
 
-                input {
-                    height: 40px;
+                .form-group {
+                    input {
+                        height: 40px;
+                    }
+
+                    small {
+                        position: absolute;
+                        right: 20px;
+                        background-color: var(--themeColor);
+                        border-radius: 3px;
+                        color: #fff;
+                        display: inline-block;
+                        padding: 2px 6px;
+                        white-space: nowrap;
+                        z-index: 0;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            left: 1px;
+                            top: -8px;
+                            margin: auto;
+                            width: 0;
+                            height: 0;
+                            border-color: transparent var(--themeColor) transparent transparent;
+                            border-style: solid;
+                            border-width: 4px 16px 7px 0;
+                            transform: rotateZ(53deg);
+                            z-index: -1;
+                        }
+                    }
                 }
 
                 button {
