@@ -28,6 +28,7 @@
   <EntityContainer Name="NEWSEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="News" EntityType="Self.News" />
     <EntitySet Name="NewsType" EntityType="NEWSModel.NewsType" />
+    <EntitySet Name="UserInfo" EntityType="NEWSModel.UserInfo" />
   </EntityContainer>
   <EntityType Name="NewsType">
     <Key>
@@ -36,5 +37,13 @@
     <Property Name="id" Type="Int64" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Val" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nickname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

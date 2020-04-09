@@ -27,5 +27,6 @@ namespace WebApplication2.Models
     
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsType> NewsType { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
     }
 }

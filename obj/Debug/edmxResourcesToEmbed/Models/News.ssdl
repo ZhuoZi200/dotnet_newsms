@@ -33,8 +33,17 @@
     <Property Name="Name" Type="varchar" MaxLength="50" />
     <Property Name="Val" Type="int" />
   </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nickname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="NEWSModelStoreContainer">
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NewsType" EntityType="Self.NewsType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

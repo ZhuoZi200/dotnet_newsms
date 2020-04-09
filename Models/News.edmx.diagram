@@ -7,6 +7,7 @@
       <Diagram DiagramId="8b5e14b69b884ce48f04ca6a0bd82a51" Name="Diagram1">
         <EntityTypeShape EntityType="NEWSModel.News" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NEWSModel.NewsType" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NEWSModel.UserInfo" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

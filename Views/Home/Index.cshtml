@@ -28,12 +28,12 @@
             <button class="btn btn-primary btn-block btn-lg" type="submit">登录</button>
         </form>
 
-        <form class="login-body login-body-1" style="display: none">
-            <input class="form-control" type="text" name="username" placeholder="用户名" />
+        <form class="login-body login-body-1" action="/Home/Regis" method="post">
+            <input class="form-control" type="text" name="Nickname" placeholder="用户名" />
                
-            <input class="form-control" type="password" name="password" placeholder="密码" />
+            <input class="form-control" type="password" name="Password" placeholder="密码" />
             
-            <input class="form-control" type="password" name="password" placeholder="确认密码" />
+            <input class="form-control" type="password" placeholder="确认密码" />
 
             <button class="btn btn-primary btn-block btn-lg" type="submit">注册</button>
         </form>
@@ -64,8 +64,19 @@
         loginForm.style.display = 'none';
         regisForm.style.display = 'flex';
     })
-    console.log(aSwitchBtn[0])
-    console.log(regisForm)
+
+    // 注册检查两次密码是否一致
+    const pwd = document.querySelectorAll('.login-body-1 input:nth-of-type(2)');
+    const conPwd = document.querySelectorAll('.login-body-1 input:nth-of-type(3)');
+
+    // ajax提交注册
+    function ajax(url) {
+        return new Promise(resolve => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        })
+    }
 </script>
 @*
     <div class="jumbotron">
