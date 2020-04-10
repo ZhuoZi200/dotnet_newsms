@@ -77,11 +77,23 @@
     })
 
     // 注册部分
-    //const nickName = document.querySelector('.login-body-1 input:nth-of-type(1)');
-    //const pwd = document.querySelector('.login-body-1 input:nth-of-type(2)');
-    //const conPwd = document.querySelector('.login-body-1 input:nth-of-type(3)');
+    //const nickName = document.querySelector('.login-body-1 .form-group:nth-of-type(1) input');
+    //const pwd = document.querySelector('.login-body-1 .form-group:nth-of-type(2) input');
+    //const conPwd = document.querySelector('.login-body-1 .form-group:nth-of-type(3) input');
     //const regisSubmit = document.querySelector('.login-body-1 button');
+    //const aInput = document.querySelectorAll('.login-body-1 .form-group input');
 
+    //for (var i = 0; i < aInput.length; i++) {
+    //    aInput[i].onblur = function () {
+    //        console.log(aInput[i])
+    //        for (var j = 0; j < aInput.length; j++) {
+    //            if (aInput[i].value == '') {
+    //                regisSubmit.disabled = true;
+    //                break;
+    //            }
+    //        }
+    //    }
+    //}
     // ajax提交注册
     //let data = {}
     //regisSubmit.addEventListener('click', function () {
@@ -130,15 +142,15 @@
                     notEmpty: {
                         message: '用户名不能为空'
                     },
-                    stringLength: { //长度限制
-                        min: 6,
-                        max: 18,
-                        message: '用户名长度必须在6到18位之间'
-                    },
-                    regexp: { //正则表达式
-                        regexp: /^[a-zA-Z0-9_]+$/,
-                        message: '用户名只能包含大写、小写、数字和下划线'
-                    }
+                    //stringLength: { //长度限制
+                    //    min: 6,
+                    //    max: 18,
+                    //    message: '用户名长度必须在6到18位之间'
+                    //},
+                    //regexp: { //正则表达式
+                    //    regexp: /^[a-zA-Z0-9_]+$/,
+                    //    message: '用户名只能包含大写、小写、数字和下划线'
+                    //}
                 }
             },
             ipassword: {
@@ -146,18 +158,16 @@
                     notEmpty: {
                         message: '密码不能为空'
                     },
-                    regexp: { //正则表达式
-                        regexp: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/,
-                        message: '密码至少包含 数字和英文，长度6-20'
-                    }
+                    //regexp: { //正则表达式
+                    //    regexp: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/,
+                    //    message: '密码至少包含 数字和英文，长度6-20'
+                    //}
                 }
             }
         }
     });
 
     $('form.login-body-1').bootstrapValidator({
-        // 默认的提示消息
-        message: 'This value is not valid',
         // 表单框里右侧的icon
         submitHandler: function (validator, form, submitButton) {
             // 表单提交成功时会调用此方法
@@ -196,6 +206,9 @@
             },
             ComfirmPassword: {
                 validators: {
+                    notEmpty: {
+                        message: '请再次输入密码'
+                    },
                     identical: {  //比较是否相同
                         field: 'Password',  //需要进行比较的input name值
                         message: '两次密码不一致'

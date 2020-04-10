@@ -9,7 +9,7 @@
   }
 }
 :root {
-  --themeColor: #337ab7;
+  --themeColor: #7899ed;
 }
 * {
   margin: 0;
@@ -56,9 +56,9 @@ body .all .login-content {
   left: 0;
   right: 0;
   margin: auto;
-  padding: 180px 50px 0;
+  padding: 205px 50px 0;
   width: 480px;
-  height: 400px;
+  height: 450px;
   background-color: #fff;
   overflow: hidden;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
@@ -70,7 +70,7 @@ body .all .login-content .login-header {
   top: 0;
   transform: translateX(-16.8%);
   width: 120%;
-  height: 40%;
+  height: 36%;
   margin: 0 auto;
   background-color: var(--themeColor);
   border-radius: 0 0 40% 60%;
@@ -106,7 +106,7 @@ body .all .login-content .login-header .switch-btn {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -15px;
+  bottom: -32px;
   margin: 0 46px;
   display: flex;
   justify-content: center;
@@ -125,17 +125,32 @@ body .all .login-content .login-header .switch-btn .on {
   color: var(--themeColor);
   border-bottom: 3px solid currentColor;
 }
+body .all .login-content .login-body .form-group .input-group-addon {
+  background-color: var(--themeColor);
+  color: #fff;
+  border-color: #a8bdf3;
+}
+body .all .login-content .login-body .form-group .form-control {
+  border-color: #a8bdf3;
+  box-shadow: 0 0 2px 0 #a8bdf3 inset;
+}
+body .all .login-content .login-body .btn-primary {
+  background-color: var(--themeColor);
+  border: none;
+}
 body .all .login-content .login-body-0 .form-group:first-of-type small {
   position: absolute;
-  top: 243px;
+  top: 269px;
 }
 body .all .login-content .login-body-0 .form-group:last-of-type small {
   position: absolute;
-  top: 309px;
+  top: 334px;
 }
-body .all .login-content .login-body-0 .input-group-lg,
-body .all .login-content .login-body-0 button {
+body .all .login-content .login-body-0 .input-group-lg {
   margin: 20px 0;
+}
+body .all .login-content .login-body-0 button {
+  margin: 35px 0;
 }
 body .all .login-content .login-body-1 {
   display: none;
@@ -172,5 +187,5 @@ body .all .login-content .login-body-1 .form-group small::before {
   z-index: -1;
 }
 body .all .login-content .login-body-1 button {
-  margin: 15px 0;
+  margin-bottom: 15px;
 }

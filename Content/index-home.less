@@ -9,7 +9,7 @@
     }
 }
 :root {
-    --themeColor: #337ab7;
+    --themeColor: #7899ed;
 }
 * {
     margin: 0;
@@ -58,9 +58,9 @@ body {
             left: 0;
             right: 0;
             margin: auto;
-            padding: 180px 50px 0;
+            padding: 205px 50px 0;
             width: 480px;
-            height: 400px;
+            height: 450px;
             background-color: #fff;
             overflow: hidden;
             box-shadow: 0 0 5px 3px rgba(0, 0, 0, .2);
@@ -72,7 +72,7 @@ body {
                 top: 0;
                 transform: translateX(-16.8%);
                 width: 120%;
-                height: 40%;
+                height: 36%;
                 margin: 0 auto;
                 background-color: var(--themeColor);
                 border-radius: 0 0 40% 60%;
@@ -111,7 +111,7 @@ body {
                     position: absolute;
                     left: 0;
                     right: 0;
-                    bottom: -15px;
+                    bottom: -32px;
                     margin: 0 46px;
                     display: flex;
                     justify-content: center;
@@ -134,23 +134,47 @@ body {
                 }
             }
 
+            .login-body {
+                .form-group {
+                    .input-group-addon {
+                        background-color: var(--themeColor);
+                        color: #fff;
+                        border-color: #a8bdf3;
+                    }
+
+                    .form-control {
+                        border-color: #a8bdf3;
+                        box-shadow: 0 0 2px 0 #a8bdf3 inset;
+                    }
+                }
+
+                .btn-primary {
+                    background-color: var(--themeColor);
+                    border: none;
+                }
+            }
+
             .login-body-0 {
                 .form-group:first-of-type {
                     small {
                         position: absolute;
-                        top: 243px;
+                        top: 269px;
                     }
                 }
 
                 .form-group:last-of-type {
                     small {
                         position: absolute;
-                        top: 309px;
+                        top: 334px;
                     }
                 }
 
-                .input-group-lg, button {
+                .input-group-lg {
                     margin: 20px 0;
+                }
+
+                button {
+                    margin: 35px 0;
                 }
             }
 
@@ -194,7 +218,7 @@ body {
                 }
 
                 button {
-                    margin: 15px 0;
+                    margin-bottom: 15px;
                 }
             }
         }
