@@ -20,11 +20,30 @@ namespace WebApplication2.Controllers
             if (string.IsNullOrEmpty(qmodel.key))
                 newsListMessage.NewsList = newsList;
             else
-                newsListMessage.NewsList = newsList.Where(o => o.Keyword.Contains(qmodel.key)).ToList();
-            //newsListMessage.NewsList = newsList;
-            //newsListMessage.Message = "新闻管理";       
+                newsListMessage.NewsList = newsList.Where(o => o.Keyword.Contains(qmodel.key)).ToList();     
 
             return View(newsListMessage);
+        }
+        [HttpPost]
+        public ActionResult Index(LoginModel loginmodel)
+        {
+            DbContext dbContext = new DbContext("NEWSEntities");
+            List<News> newsList = dbContext.Set<News>().ToList();
+            List<UserInfo> userInfoList = dbContext.Set<UserInfo>().ToList();
+            dbContext.Dispose();   // 类似于析构函数
+
+            NewsListMessage newsListMessage = new NewsListMessage();
+            newsListMessage.NewsList = newsList;
+            newsListMessage.CurrentUserName = loginmodel.iusername;
+
+            foreach (var item in userInfoList)
+            {
+                if(item.Nickname == loginmodel.iusername && item.Password == loginmodel.ipassword)
+                {
+                    return View(newsListMessage);
+                } 
+            }
+            return View("~/Views/Home/Index.cshtml");
         }
         public ActionResult Details()
         {

@@ -1,10 +1,10 @@
 ﻿@using WebApplication2.Models.ViewModels
-@Model NewsListMessage 
+@*@Model NewsListMessage*@
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>@Model.Message</h2>
+<h3>您好，@Model.CurrentUserName</h3>
 
 <form>
     <div class="form-group">
@@ -23,6 +23,7 @@
         <th class="text-center">标题</th>
         <th class="text-center">作者</th>
         <th class="text-center">关键字</th>
+        <th class="text-center">类型</th>
         <th class="text-center">添加时间</th>
     </tr>
     @foreach (var item in Model.NewsList)
@@ -31,6 +32,32 @@
             <td>@item.Title</td>
             <td>@item.Author</td>
             <td>@item.Keyword</td>
+            <td>
+                @if (item.Type == 0)
+                {
+                    <text>国际</text>
+                }
+                else if (item.Type == 1)
+                {
+                    <text>政治</text>
+                }
+                else if (item.Type == 2)
+                {
+                    <text>军事</text>
+                }
+                else if (item.Type == 3)
+                {
+                    <text>科技</text>
+                }
+                else if (item.Type == 4)
+                {
+                    <text>娱乐</text>
+                }
+                else
+                {
+                    <text>其他</text>
+                }
+            </td>
             <td>@item.CreateTime</td>
         </tr>
     }
@@ -42,42 +69,62 @@
     <a href="/My/Add" class="btn btn-primary">添加新闻</a>
 </div>
 
+@* 登录成功弹出一个提示模态框 *@
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h4 style="text-align: center; font-weight: bold; color: #8aa1fa;">登录成功</h4>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @Html.ActionLink("页面详情", "Details", "My")
-
-@*<script>
-    $(document).ready(function () {
-        $(".partial-content").load('/My/Details');
+<script>
+    $(function () {
+        $("#myModal").modal({
+            keyboard: true
+        });
     });
-</script>*@
+</script>
 @*<script>
-    const submit = document.querySelector('.btn-info');
+        $(document).ready(function () {
+            $(".partial-content").load('/My/Details');
+        });
+    </script>*@
+@*<script>
+        const submit = document.querySelector('.btn-info');
 
-    submit.addEventListener('click', function () {
-        const oResult = document.querySelector('pre');
-        let title = document.querySelector('#title');
-        let key = document.querySelector('#keyword');
-        let titleVal = title.value;
-        let keyVal = key.value;
+        submit.addEventListener('click', function () {
+            const oResult = document.querySelector('pre');
+            let title = document.querySelector('#title');
+            let key = document.querySelector('#keyword');
+            let titleVal = title.value;
+            let keyVal = key.value;
 
-        // ajax
-        const xhr = new XMLHttpRequest();
-        xhr.open('get', `/My/QueryRes?Title=${titleVal}&Keyword=${keyVal}&timestamp=${new Date().getTime()}`);  // timestamp防止使用缓存数据
-        xhr.onreadystatechange = function () {
-            console.log(xhr.readyState);
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                const box = document.createElement("h3");
-                const txtNode = document.createTextNode(xhr.responseText);
-                box.appendChild(txtNode);
-                oResult.innerHTML = '';
-                oResult.appendChild(box);
+            // ajax
+            const xhr = new XMLHttpRequest();
+            xhr.open('get', `/My/QueryRes?Title=${titleVal}&Keyword=${keyVal}&timestamp=${new Date().getTime()}`);  // timestamp防止使用缓存数据
+            xhr.onreadystatechange = function () {
+                console.log(xhr.readyState);
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    const box = document.createElement("h3");
+                    const txtNode = document.createTextNode(xhr.responseText);
+                    box.appendChild(txtNode);
+                    oResult.innerHTML = '';
+                    oResult.appendChild(box);
+                }
+                else {
+                    oResult.innerHTML = '查询失败！';
+                }
             }
-            else {
-                oResult.innerHTML = '查询失败！';
-            }
-        }
-        xhr.send(null);
+            xhr.send(null);
 
-        title.value = '';  // 清空用户输入
-        key.value = '';
-    });
-</script>*@
+            title.value = '';  // 清空用户输入
+            key.value = '';
+        });
+    </script>*@

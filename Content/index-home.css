@@ -142,6 +142,10 @@ body .all .login-content .login-body-0 .form-group:first-of-type small {
   position: absolute;
   top: 269px;
 }
+body .all .login-content .login-body-0 .form-group:first-of-type .has-error,
+body .all .login-content .login-body-0 .form-group:first-of-type .help-block {
+  color: var(--themeColor);
+}
 body .all .login-content .login-body-0 .form-group:last-of-type small {
   position: absolute;
   top: 334px;

@@ -5,8 +5,9 @@ using System.Web;
 
 namespace WebApplication2.Models.ViewModels
 {
-    public class UserInfoModel
+    public class LoginModel
     {
-
+        public string iusername { get; set; }
+        public string ipassword { get; set; }
     }
 }
