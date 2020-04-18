@@ -25,6 +25,7 @@
         <th class="text-center">关键字</th>
         <th class="text-center">类型</th>
         <th class="text-center">添加时间</th>
+        <th class="text-center">操作</th>
     </tr>
     @foreach (var item in Model.NewsList)
     {
@@ -59,6 +60,12 @@
                 }
             </td>
             <td>@item.CreateTime</td>
+            <td>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modify-model">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </div>
+            </td>
         </tr>
     }
 </table>
@@ -68,6 +75,7 @@
 <div class="well add-btn">
     <a href="/My/Add" class="btn btn-primary">添加新闻</a>
 </div>
+@Html.ActionLink("页面详情", "Details", "My")
 
 @* 登录成功弹出一个提示模态框 *@
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -80,16 +88,73 @@
                 <h4 style="text-align: center; font-weight: bold; color: #8aa1fa;">登录成功</h4>
             </div>
 
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-@Html.ActionLink("页面详情", "Details", "My")
+        </div>
+    </div>
+</div>
+
+@* 修改新闻的模态框 *@
+<div id="modify-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <form class="modal-content" action="My/modify">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改新闻</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>标题：</label>
+                    <input class="form-control" type="text" name="title" />
+                </div>
+                <div class="form-group">
+                    <label>关键字：</label>
+                    <input class="form-control" type="text" name="keyword" />
+                </div>
+                <div class="form-group">
+                    <label>作者：</label>
+                    <input class="form-control" type="text" name="author" />
+                </div>
+                <div class="form-group">
+                    <label>类别：</label>
+                    <select class="form-control" name="type">
+                        <option value="0">国际</option>
+                        <option value="1">政治</option>
+                        <option value="2">军事</option>
+                        <option value="3">科技</option>
+                        <option value="4">娱乐</option>
+                        <option value="5">其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">确定</button>
+            </div>
+        </form>
+    </div>
+</div>
 <script>
+    // 模态框配置参数 start
     $(function () {
         $("#myModal").modal({
             keyboard: true
         });
     });
+    // 模态框配置参数 end
+
+    var aRows = document.querySelectorAll('table tr:not(:first-of-type)');
+    aRows.forEach(item => {
+        var modifyBtn = item.lastElementChild.children[0].firstElementChild;
+        modifyBtn.addEventListener('click', function () {
+            console.log(item)
+        })
+    })
+    //aBtnGroup[0].addEventListener('click', function () {
+    //    aBtnGroup[0].style.display = 'inline-block';
+    //    aBtnGroup[1].style.display = 'none';
+    //})
+    //aBtnGroup[1].addEventListener('click', function () {
+    //    aBtnGroup[0].style.display = 'none';
+    //    aBtnGroup[1].style.display = 'inline-block';
+    //})
 </script>
 @*<script>
         $(document).ready(function () {
