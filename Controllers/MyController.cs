@@ -83,9 +83,10 @@ namespace WebApplication2.Controllers
             dbContext.SaveChanges();
             dbContext.Dispose();
 
+            NewsListMessage newsListMessage = new NewsListMessage();
+            newsListMessage.NewsList = newsList;
 
-
-            return View("/Views/My/Index.cshtml");
+            return View("/Views/My/Index.cshtml", newsListMessage);
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿@using WebApplication2.Models.ViewModels
-@*@Model NewsListMessage*@
+@model NewsListMessage
 @{
     ViewBag.Title = "Index";
 }
 
-<h3>您好，@ViewBag.CurrentUserName</h3>
+<h3>您好，@Model.CurrentUserName</h3>
 
 <form>
     <div class="form-group">
@@ -27,7 +27,7 @@
         <th class="text-center">添加时间</th>
         <th class="text-center">操作</th>
     </tr>
-    @foreach (var item in ViewBag.NewsList)
+    @foreach (var item in Model.NewsList)
     {
         <tr>
             <td>@item.Title</td>
