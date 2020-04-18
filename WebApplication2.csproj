@@ -159,6 +159,7 @@
     <Compile Include="Models\UserInfo.cs">
       <DependentUpon>News.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\ModifyModel.cs" />
     <Compile Include="Models\ViewModels\NewsListMessage.cs" />
     <Compile Include="Models\ViewModels\QueryModel.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />

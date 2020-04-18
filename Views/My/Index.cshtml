@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h3>您好，@Model.CurrentUserName</h3>
+<h3>您好，@ViewBag.CurrentUserName</h3>
 
 <form>
     <div class="form-group">
@@ -27,7 +27,7 @@
         <th class="text-center">添加时间</th>
         <th class="text-center">操作</th>
     </tr>
-    @foreach (var item in Model.NewsList)
+    @foreach (var item in ViewBag.NewsList)
     {
         <tr>
             <td>@item.Title</td>
@@ -95,7 +95,7 @@
 @* 修改新闻的模态框 *@
 <div id="modify-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel">
     <div class="modal-dialog modal-lg" role="document">
-        <form class="modal-content" action="My/modify">
+        <form class="modal-content" action="/My/Modify">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">修改新闻</h4>
@@ -103,19 +103,19 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>标题：</label>
-                    <input class="form-control" type="text" name="title" />
+                    <input class="form-control" type="text" name="Title" />
                 </div>
                 <div class="form-group">
                     <label>关键字：</label>
-                    <input class="form-control" type="text" name="keyword" />
+                    <input class="form-control" type="text" name="Keyword" />
                 </div>
                 <div class="form-group">
                     <label>作者：</label>
-                    <input class="form-control" type="text" name="author" />
+                    <input class="form-control" type="text" name="Author" />
                 </div>
                 <div class="form-group">
                     <label>类别：</label>
-                    <select class="form-control" name="type">
+                    <select class="form-control" name="Type">
                         <option value="0">国际</option>
                         <option value="1">政治</option>
                         <option value="2">军事</option>
@@ -124,9 +124,10 @@
                         <option value="5">其他</option>
                     </select>
                 </div>
+                <input type="hidden" name="Index" />
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">确定</button>
+                <button id="modify-submit" type="submit" class="btn btn-primary">确定</button>
             </div>
         </form>
     </div>
@@ -141,12 +142,31 @@
     // 模态框配置参数 end
 
     var aRows = document.querySelectorAll('table tr:not(:first-of-type)');
-    aRows.forEach(item => {
+    var modifySubmit = document.querySelector('#modify-model #modify-submit');
+    var indexSubmit = document.querySelector('#modify-model input[type=hidden]');
+    var modifyForm = document.querySelector('form.modal-content');
+    console.log(modifyForm)
+    aRows.forEach((item, index) => {
         var modifyBtn = item.lastElementChild.children[0].firstElementChild;
+        modifyBtn.index = index;
         modifyBtn.addEventListener('click', function () {
-            console.log(item)
+            console.log(this.index)
+            indexSubmit.value = this.index;
         })
+        console.log(modifyBtn.index)
     })
+
+    //modifySubmit.addEventListener('click', function () {
+    //    var formData = new FormData(modifyForm);
+    //    var xhr = new XMLHttpRequest();
+    //    xhr.open('POST', '/My/Modify');
+    //    xhr.onreadystatechange = function () {
+    //        if (xhr.status == 200) {
+    //            console.log(this)
+    //        }
+    //    }
+    //    xhr.send(null);
+    //})
     //aBtnGroup[0].addEventListener('click', function () {
     //    aBtnGroup[0].style.display = 'inline-block';
     //    aBtnGroup[1].style.display = 'none';
@@ -159,37 +179,5 @@
 @*<script>
         $(document).ready(function () {
             $(".partial-content").load('/My/Details');
-        });
-    </script>*@
-@*<script>
-        const submit = document.querySelector('.btn-info');
-
-        submit.addEventListener('click', function () {
-            const oResult = document.querySelector('pre');
-            let title = document.querySelector('#title');
-            let key = document.querySelector('#keyword');
-            let titleVal = title.value;
-            let keyVal = key.value;
-
-            // ajax
-            const xhr = new XMLHttpRequest();
-            xhr.open('get', `/My/QueryRes?Title=${titleVal}&Keyword=${keyVal}&timestamp=${new Date().getTime()}`);  // timestamp防止使用缓存数据
-            xhr.onreadystatechange = function () {
-                console.log(xhr.readyState);
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    const box = document.createElement("h3");
-                    const txtNode = document.createTextNode(xhr.responseText);
-                    box.appendChild(txtNode);
-                    oResult.innerHTML = '';
-                    oResult.appendChild(box);
-                }
-                else {
-                    oResult.innerHTML = '查询失败！';
-                }
-            }
-            xhr.send(null);
-
-            title.value = '';  // 清空用户输入
-            key.value = '';
         });
     </script>*@

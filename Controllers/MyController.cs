@@ -36,6 +36,9 @@ namespace WebApplication2.Controllers
             newsListMessage.NewsList = newsList;
             newsListMessage.CurrentUserName = loginmodel.iusername;
 
+            ViewBag.NewsList = newsList;
+            ViewBag.CurrentUserName = loginmodel.iusername;
+
             foreach (var item in userInfoList)
             {
                 if(item.Nickname == loginmodel.iusername && item.Password == loginmodel.ipassword)
@@ -69,11 +72,20 @@ namespace WebApplication2.Controllers
             dbContext.Dispose();   // 类似于析构函数
             return View();
         }
-        //public ActionResult QueryRes(News news)
-        //{
-        //    ViewBag.Title = news.Title;
-        //    ViewBag.Keyword = news.Keyword;
-        //    return Content("你查询的标题是：" + news.Title + "，关键字是：" + news.Keyword);
-        //}
+        public ActionResult Modify(ModifyModel modifymodel)
+        {
+            DbContext dbContext = new DbContext("NEWSEntities");
+            List<News> newsList = dbContext.Set<News>().ToList();
+            newsList[modifymodel.Index].Title = modifymodel.Title;
+            newsList[modifymodel.Index].Author = modifymodel.Author;
+            newsList[modifymodel.Index].Keyword = modifymodel.Keyword;
+            newsList[modifymodel.Index].Type = modifymodel.Type;
+            dbContext.SaveChanges();
+            dbContext.Dispose();
+
+
+
+            return View("/Views/My/Index.cshtml");
+        }
     }
 }
