@@ -86,7 +86,23 @@ namespace WebApplication2.Controllers
             NewsListMessage newsListMessage = new NewsListMessage();
             newsListMessage.NewsList = newsList;
 
-            return View("/Views/My/Index.cshtml", newsListMessage);
+            return View("~/Views/My/Index.cshtml", newsListMessage);
+        }
+        public ActionResult Delete(int Index)
+        {
+            DbContext dbContext = new DbContext("NEWSEntities");
+            List<News> newsList = dbContext.Set<News>().ToList();
+            //newsList.Remove(newsList[Index]);
+            //News news = dbContext.Set<News>().Find(Index);
+            dbContext.Set<News>().Remove(newsList[Index]);
+            dbContext.SaveChanges();
+
+            NewsListMessage newsListMessage = new NewsListMessage();
+            newsListMessage.NewsList = newsList;
+            newsList = dbContext.Set<News>().ToList();
+            dbContext.Dispose();
+
+            return View("~/Views/My/Index.cshtml", newsListMessage);
         }
     }
 }

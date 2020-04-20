@@ -62,8 +62,9 @@
             <td>@item.CreateTime</td>
             <td>
                 <div class="pull-right">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modify-model">修改</button>
-                    <button class="btn btn-danger">删除</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modify-modal">修改</button>
+                    @*<a href="/My/Index" class="btn btn-danger">删除</a>*@
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm-modal">删除</button>
                 </div>
             </td>
         </tr>
@@ -78,7 +79,7 @@
 @Html.ActionLink("页面详情", "Details", "My")
 
 @* 登录成功弹出一个提示模态框 *@
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+@*<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document" style="width: 300px;">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,11 +91,26 @@
 
         </div>
     </div>
+</div>*@
+
+@* 确认删除模态框 *@
+<div id="confirm-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 300px;height:100%">
+        <div class="modal-content" style="top:50%;transform:translateY(-50%)">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">确认删除该条新闻吗？</h4>
+            </div>
+            <div class="modal-body">
+                <a href="/My/Index" class="btn btn-primary center-block confirm" style="margin:0 100px">确定</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @* 修改新闻的模态框 *@
-<div id="modify-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
+<div id="modify-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="margin: 120px auto;">
         <form class="modal-content" action="/My/Modify">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -134,11 +150,11 @@
 </div>
 <script>
     // 模态框配置参数 start
-    $(function () {
-        $("#myModal").modal({
-            keyboard: true
-        });
-    });
+    //$(function () {
+    //    $("#myModal").modal({
+    //        keyboard: true
+    //    });
+    //});
     // 模态框配置参数 end
 
     var aRows = document.querySelectorAll('table tr:not(:first-of-type)');
@@ -154,6 +170,30 @@
             indexSubmit.value = this.index;
         })
         console.log(modifyBtn.index)
+
+        // 删除按钮
+        var delBtn = item.lastElementChild.children[0].lastElementChild;
+        delBtn.index = index;
+
+        delBtn.addEventListener('click', function () {
+            confirmBtn.index = this.index;
+        });      
+    })
+
+    // 删除按钮
+    var confirmBtn = document.querySelector('#confirm-modal a.confirm');
+    confirmBtn.addEventListener('click', function () {
+        console.log(this.index)
+        new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `/My/Delete?Index=${this.index}`);
+            xhr.onload = function () {
+                resolve();
+            }
+            xhr.send(null);
+        }).catch(reason => {
+            console.log(reason);
+        });
     })
 
     //modifySubmit.addEventListener('click', function () {
