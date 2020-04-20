@@ -48,12 +48,6 @@ namespace WebApplication2.Controllers
             }
             return View("~/Views/Home/Index.cshtml");
         }
-        public ActionResult Details()
-        {
-            ViewBag.Message = "我是分部视图";
-            
-            return PartialView();
-        }
         public ActionResult Add()
         {
             DbContext dbContext = new DbContext("NEWSEntities");
@@ -103,6 +97,12 @@ namespace WebApplication2.Controllers
             dbContext.Dispose();
 
             return View("~/Views/My/Index.cshtml", newsListMessage);
+        }
+        public ActionResult Details()
+        {
+            ViewBag.Message = "我是分部视图";
+
+            return PartialView();
         }
     }
 }

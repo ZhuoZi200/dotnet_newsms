@@ -1,0 +1,33 @@
+﻿
+@using WebApplication2.Models.ViewModels
+@model NewsListMessage
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+<div class="row">
+    <section class="col-md-9">
+        @foreach (var item in Model.NewsList)
+        {
+            <article class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@item.Title</h3>
+                </div>
+                <div class="panel-body">
+                    @item.Contents
+                </div>
+            </article>
+        }
+    </section>
+    <aside class="col-md-3">
+        <div class="list-group">
+            <a href="" class="list-group-item">按时间</a>
+            <a href="" class="list-group-item">按类别</a>
+            <a href="" class="list-group-item">按关键字</a>
+            <a href="" class="list-group-item">按来源</a>
+            <a href="" class="list-group-item">按作者</a>
+        </div>
+    </aside>
+</div>
+

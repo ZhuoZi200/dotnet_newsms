@@ -1,0 +1,66 @@
+:root {
+  --themeColor: #7899ed;
+}
+nav#myNav {
+  position: relative;
+  padding: 20px 0;
+  border-bottom: 2px solid var(--themeColor);
+}
+nav#myNav .container .navbar-header a {
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  color: var(--themeColor);
+}
+nav#myNav .container .navbar-collapse ul.navbar-nav {
+  width: 210px;
+  display: flex;
+  justify-content: space-between;
+}
+nav#myNav .container .navbar-collapse ul.navbar-nav li a {
+  font-size: 16px;
+  color: var(--themeColor);
+}
+nav#myNav .container .navbar-collapse ul.navbar-nav li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--themeColor);
+}
+nav#myNav .wrap {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 0px;
+  bottom: 0;
+  transform: translateY(100%);
+  background-color: var(--themeColor);
+  transition: height 1s;
+}
+nav#myNav .wrap ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 15px;
+}
+nav#myNav .wrap ul li {
+  margin: 50px;
+}
+nav#myNav .wrap ul li a {
+  opacity: 0;
+  color: #fff;
+  transition: opacity 1s;
+}
+nav#myNav .on {
+  height: 70px;
+}
+nav#myNav .on ul li a {
+  opacity: 1;
+}

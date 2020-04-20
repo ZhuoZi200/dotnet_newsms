@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,6 +174,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\index-home.css" />
     <Content Include="Content\img\logo.jpg" />
+    <Content Include="Content\nav.css" />
     <Content Include="Content\tinymce\jquery.tinymce.min.js" />
     <Content Include="Content\tinymce\langs\zh_CN.js" />
     <Content Include="Content\tinymce\license.txt" />
@@ -343,6 +345,7 @@
     </Content>
     <Content Include="Content\Add.less" />
     <Content Include="Content\index-home.less" />
+    <Content Include="Content\nav.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -354,6 +357,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <None Include="Views\Shared\_ClientLayout.cshtml" />
+    <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -372,6 +377,7 @@
     <Content Include="Views\My\Details.cshtml" />
     <Content Include="Views\My\Add.cshtml" />
     <Content Include="Views\My\Delete.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

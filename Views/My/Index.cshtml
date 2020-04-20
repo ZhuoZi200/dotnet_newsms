@@ -76,7 +76,7 @@
 <div class="well add-btn">
     <a href="/My/Add" class="btn btn-primary">添加新闻</a>
 </div>
-@Html.ActionLink("页面详情", "Details", "My")
+@Html.ActionLink("新闻详情", "Details", "My")
 
 @* 登录成功弹出一个提示模态框 *@
 @*<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -149,14 +149,6 @@
     </div>
 </div>
 <script>
-    // 模态框配置参数 start
-    //$(function () {
-    //    $("#myModal").modal({
-    //        keyboard: true
-    //    });
-    //});
-    // 模态框配置参数 end
-
     var aRows = document.querySelectorAll('table tr:not(:first-of-type)');
     var modifySubmit = document.querySelector('#modify-model #modify-submit');
     var indexSubmit = document.querySelector('#modify-model input[type=hidden]');
@@ -195,26 +187,6 @@
             console.log(reason);
         });
     })
-
-    //modifySubmit.addEventListener('click', function () {
-    //    var formData = new FormData(modifyForm);
-    //    var xhr = new XMLHttpRequest();
-    //    xhr.open('POST', '/My/Modify');
-    //    xhr.onreadystatechange = function () {
-    //        if (xhr.status == 200) {
-    //            console.log(this)
-    //        }
-    //    }
-    //    xhr.send(null);
-    //})
-    //aBtnGroup[0].addEventListener('click', function () {
-    //    aBtnGroup[0].style.display = 'inline-block';
-    //    aBtnGroup[1].style.display = 'none';
-    //})
-    //aBtnGroup[1].addEventListener('click', function () {
-    //    aBtnGroup[0].style.display = 'none';
-    //    aBtnGroup[1].style.display = 'inline-block';
-    //})
 </script>
 @*<script>
         $(document).ready(function () {
