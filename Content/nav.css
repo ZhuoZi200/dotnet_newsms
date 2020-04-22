@@ -1,28 +1,30 @@
 :root {
   --themeColor: #7899ed;
 }
-nav#myNav {
-  position: relative;
+body {
+  margin-top: 170px;
+}
+body nav#myNav {
   padding: 20px 0;
   border-bottom: 2px solid var(--themeColor);
 }
-nav#myNav .container .navbar-header a {
+body nav#myNav .container .navbar-header a {
   font-size: 30px;
   font-weight: bold;
   font-style: italic;
   text-decoration: underline;
   color: var(--themeColor);
 }
-nav#myNav .container .navbar-collapse ul.navbar-nav {
+body nav#myNav .container .navbar-collapse ul.navbar-nav {
   width: 210px;
   display: flex;
   justify-content: space-between;
 }
-nav#myNav .container .navbar-collapse ul.navbar-nav li a {
+body nav#myNav .container .navbar-collapse ul.navbar-nav li a {
   font-size: 16px;
   color: var(--themeColor);
 }
-nav#myNav .container .navbar-collapse ul.navbar-nav li.active::after {
+body nav#myNav .container .navbar-collapse ul.navbar-nav li.active::after {
   content: '';
   position: absolute;
   bottom: -32px;
@@ -32,7 +34,7 @@ nav#myNav .container .navbar-collapse ul.navbar-nav li.active::after {
   border-style: solid;
   border-color: transparent transparent var(--themeColor);
 }
-nav#myNav .wrap {
+body nav#myNav .wrap {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -42,7 +44,7 @@ nav#myNav .wrap {
   background-color: var(--themeColor);
   transition: height 1s;
 }
-nav#myNav .wrap ul {
+body nav#myNav .wrap ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -50,17 +52,17 @@ nav#myNav .wrap ul {
   height: 100%;
   font-size: 15px;
 }
-nav#myNav .wrap ul li {
+body nav#myNav .wrap ul li {
   margin: 50px;
 }
-nav#myNav .wrap ul li a {
+body nav#myNav .wrap ul li a {
   opacity: 0;
   color: #fff;
   transition: opacity 1s;
 }
-nav#myNav .on {
+body nav#myNav .on {
   height: 70px;
 }
-nav#myNav .on ul li a {
+body nav#myNav .on ul li a {
   opacity: 1;
 }

@@ -2,79 +2,86 @@
 	--themeColor: #7899ed;
 }
 
-nav#myNav {
-	position: relative;
-	padding: 20px 0;
-	border-bottom: 2px solid var(--themeColor);
-	
-	.container {
-		.navbar-header {
-			a {
-				font-size: 30px;
-				font-weight: bold;
-				font-style: italic;
-				text-decoration: underline;
-				color: var(--themeColor);
-			}
-		}
-		.navbar-collapse {
-			ul.navbar-nav {
-				width: 210px;
-				display: flex;
-				justify-content: space-between;
-				
-				li {
-					a {
-						font-size: 16px;
-						color: var(--themeColor);
-						
-					}
-					&.active::after {
-						content: '';
-						position: absolute;
-						bottom: -32px;
-						left: 50%;
-						transform: translateX(-50%);
-						border-width: 0 10px 10px;
-						border-style: solid;
-						border-color: transparent transparent var(--themeColor);
-					}
-				}
-			}
-		}
-	}
-	
-	.wrap {
-		position: absolute;
-		z-index: 1;
-		width: 100%;
-		height: 0px;
-		bottom: 0;
-		transform: translateY(100%);
-		background-color: var(--themeColor);
-		transition: height 1s;
-		
-		ul {
-			list-style: none;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100%;
-			font-size: 15px;
-			li {
-				margin: 50px;
+body {
+	margin-top: 170px;
+	nav#myNav {
+		padding: 20px 0;
+		border-bottom: 2px solid var(--themeColor);
+
+		.container {
+			.navbar-header {
 				a {
-					opacity: 0;
-					color: #fff;
-					transition: opacity 1s;
+					font-size: 30px;
+					font-weight: bold;
+					font-style: italic;
+					text-decoration: underline;
+					color: var(--themeColor);
+				}
+			}
+
+			.navbar-collapse {
+				ul.navbar-nav {
+					width: 210px;
+					display: flex;
+					justify-content: space-between;
+
+					li {
+						a {
+							font-size: 16px;
+							color: var(--themeColor);
+						}
+
+						&.active::after {
+							content: '';
+							position: absolute;
+							bottom: -32px;
+							left: 50%;
+							transform: translateX(-50%);
+							border-width: 0 10px 10px;
+							border-style: solid;
+							border-color: transparent transparent var(--themeColor);
+						}
+					}
 				}
 			}
 		}
-	}
-	.on {
-		height: 70px;
-		ul li a {
-			opacity: 1;
+
+		.wrap {
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			height: 0px;
+			bottom: 0;
+			transform: translateY(100%);
+			background-color: var(--themeColor);
+			transition: height 1s;
+
+			ul {
+				list-style: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				font-size: 15px;
+
+				li {
+					margin: 50px;
+
+					a {
+						opacity: 0;
+						color: #fff;
+						transition: opacity 1s;
+					}
+				}
+			}
+		}
+
+		.on {
+			height: 70px;
+
+			ul li a {
+				opacity: 1;
+			}
 		}
 	}
 }

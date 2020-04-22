@@ -1,0 +1,39 @@
+﻿body {
+    .panel-info {
+        /*border-color: var(--themeColor);*/
+        .panel-heading {
+            color: #000;
+            font-weight: bold;
+
+            h3 {
+                .label-primary {
+                    background-color: var(--themeColor);
+                }
+
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    /*background-color: var(--themeColor);*/
+                    border-width: 10px 0 10px 15px;
+                    border-color: transparent #fff;
+                    border-style: solid;
+                    vertical-align: -4px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .panel-body p {
+            text-indent: 2em;
+        }
+
+        .panel-footer {
+            padding: 5px 15px;
+            background-color: #fff;
+
+            time {
+                color: var(--themeColor);
+            }
+        }
+    }
+}

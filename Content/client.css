@@ -1,0 +1,30 @@
+body .panel-info {
+  /*border-color: var(--themeColor);*/
+}
+body .panel-info .panel-heading {
+  color: #000;
+  font-weight: bold;
+}
+body .panel-info .panel-heading h3 .label-primary {
+  background-color: var(--themeColor);
+}
+body .panel-info .panel-heading h3::before {
+  content: '';
+  display: inline-block;
+  /*background-color: var(--themeColor);*/
+  border-width: 10px 0 10px 15px;
+  border-color: transparent #fff;
+  border-style: solid;
+  vertical-align: -4px;
+  margin-right: 10px;
+}
+body .panel-info .panel-body p {
+  text-indent: 2em;
+}
+body .panel-info .panel-footer {
+  padding: 5px 15px;
+  background-color: #fff;
+}
+body .panel-info .panel-footer time {
+  color: var(--themeColor);
+}
